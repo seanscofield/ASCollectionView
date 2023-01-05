@@ -66,6 +66,7 @@ public struct ASCollectionView<SectionID: Hashable>: UIViewControllerRepresentab
 	public func makeUIViewController(context: Context) -> AS_CollectionViewController
 	{
 		context.coordinator.parent = self
+		print("Making view controller!")
 
 		let delegate = delegateInitialiser()
 		delegate.coordinator = context.coordinator
@@ -1019,6 +1020,8 @@ extension ASCollectionView.Coordinator
 	func setupPrefetching()
 	{
 		let numberToPreload = 200
+		print("Will prefetch")
+		print(numberToPreload)
 		prefetchSubscription = queuePrefetch
 			.collect(.byTime(DispatchQueue.main, 0.1)) // .throttle CRASHES on 13.1, fixed from 13.3 but still using .collect for 13.1 compatibility
 			.compactMap
