@@ -1018,7 +1018,7 @@ extension ASCollectionView.Coordinator
 {
 	func setupPrefetching()
 	{
-		let numberToPreload = 18
+		let numberToPreload = 50
 		prefetchSubscription = queuePrefetch
 			.collect(.byTime(DispatchQueue.main, 0.1)) // .throttle CRASHES on 13.1, fixed from 13.3 but still using .collect for 13.1 compatibility
 			.compactMap
